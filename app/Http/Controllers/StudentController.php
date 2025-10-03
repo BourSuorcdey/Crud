@@ -29,6 +29,13 @@ class StudentController extends Controller
         ]);
         return redirect()->route("students.index")->with("success","Add student successfully!");
     }
+
+    public function edit(Request $request, $id){
+        $student = Student::find($id);
+        
+        return view("students.edit", compact("student"));
+     }
+
     public function update(Request $request, $id) {
         $request->validate( [
             "name"=> "required",
@@ -46,16 +53,15 @@ class StudentController extends Controller
 
         return redirect()->route("students.index")->with("success","Student has updated!");
         }
-    
-     public function edit(Request $request, $id){
-        $student = Student::find($id);
-        
-        return view("students.edit", compact("student"));
-     }
 
      public function delete(Request $request, $id) {
         $student = Student::find($id);
         $student->delete();
         return redirect()->route("students.index")->with("success","Student has deleted!");
+     }
+
+     public function detail(Request $request, $id) {
+        $student = Student::find($id);
+        return view("students.detail", compact("student"));   
      }
 }

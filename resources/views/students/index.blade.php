@@ -44,6 +44,7 @@
                             <td>{{$student->gender}}</td>
                             <td>{{$student->email}}</td>
                             <td>
+                                <a href="{{route("students.detail", $student->id)}}" class="btn btn-info ">Detail</a>
                                 <a href="{{route("students.edit", $student->id)}}" class="btn btn-primary ">update</a>
                                 <a href="{{route("students.delete", $student->id)}}" class="btn btn-danger" 
                                     onclick="return confirm('Delete this student?')">Delete</a>
